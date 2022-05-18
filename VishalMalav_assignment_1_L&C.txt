@@ -1,0 +1,85 @@
+The below program is to Roll the Dice
+
+
+import random
+def getRandomNumber(diceSide):
+    result=random.randint(1, diceSide)
+    return result
+
+
+def main():
+    diceSide=6
+    gameContinue=True
+    while gameContinue:
+        gameInput=input("Ready to roll? Enter Q to Quit")
+        if gameInput.lower() !="q":
+            randomNumber=getRandomNumber(s)
+            print("You have rolled a",randomNumber)
+        else:
+            gameContinue=False
+
+
+Assignment 2: The below program is to guess the correct number between 1 to 100
+def isDigitInRange(number):
+    if number.isdigit() and 1<= int(number) <=100:
+        return True
+    else:
+        return False
+
+def main():
+    resultNumber=random.randint(1,100)
+    guessSuccefully=False
+    guessNumber=input("Guess a number between 1 and 100:")
+    guessTryCount=0
+    while not guessSuccefully:
+        if not isDigitInRange(guessNumber):
+            guessNumber=input("I wont count this one Please enter a number between 1 to 100")
+            continue
+        else:
+            guessTryCount+=1
+            guessNumber=int(guessNumber)
+
+        if guessNumber<resultNumber:
+            guessNumber=input("Too low. Guess again")
+        elif guessNumber>resultNumber:
+            guessNumber=input("Too High. Guess again")
+        else:
+            print("You guessed it in",guessTryCount,"guesses!")
+            guessSuccefully=True
+
+main()
+
+
+Assignment 3: The below program is to check whether the number is Armstrong number or not
+
+
+def getArmstrong(number):
+    # Initializing Sum and Number of Digits
+    sum = 0
+    numberOfDigit = 0
+
+    # Calculating Number of individual digits
+    numberOfIndividualDigit = number
+    while numberOfIndividualDigit > 0:
+        numberOfDigit = numberOfDigit + 1
+        numberOfIndividualDigit = numberOfIndividualDigit // 10
+
+    # Finding Armstrong Number
+    numberOfIndividualDigit = number
+    for number in range(1, numberOfIndividualDigit + 1):
+        reminder = numberOfIndividualDigit % 10
+        armstrongSum = armstrongSum + (reminder ** t)
+        numberOfIndividualDigit //= 10
+    return armstrongSum
+
+
+# End of Function
+
+# User Input
+number = int(input("\nPlease Enter the Number to Check for Armstrong: "))
+
+if (number == getArmstrong(number)):
+    print("\n %d is Armstrong Number.\n" % number)
+else:
+    print("\n %d is Not a Armstrong Number.\n" % number)
+
