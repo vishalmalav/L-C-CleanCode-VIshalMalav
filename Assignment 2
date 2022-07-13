@@ -1,3 +1,5 @@
+Assignment 1:
+
 def isDigitInRange(number):
     if number.isdigit() and 1<= int(number) <=100:
         return True
@@ -34,3 +36,67 @@ def main():
 	guessTry(guessNumber,guessTryCount)
 	guessGame(guessNumber,resultNumber,guessSuccefully)
 main()
+
+
+
+
+Question 2:
+
+using System;
+using System.Numerics;
+class MyClass {
+    static void Main(string[] args) {
+       var arrayInput = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
+            var array = Array.ConvertAll(Console.ReadLine().Split(' '), long.Parse);
+            long[] sumOfArray = new long[arrayInput[0] + 1];
+            sumOfArray[0] = 0;
+            for (int i = 1; i <= arrayInput[0]; i++)
+            {
+                sumOfArray[i] = sumOfArray[i - 1] + array[i - 1];
+            }
+            for (var x = 0; x < arrayInput[1]; x++)
+            {
+                var arrayInput = Array.ConvertAll(Console.ReadLine().Split(' '), int.parse);
+		int leftIndex=arrayInput[0];
+		int rightIndex=arrayInput[1];
+                Console.WriteLine((long)((long)(sumOfArray[rightIndex] - sumOfArray[leftIndex - 1]) / (rightIndex - rightIndex + 1)));
+            }
+    }
+}
+
+
+
+Question 3:
+
+public class CustomerSearch
+{
+    public List < Customer > SearchCustomerByCountry(string country)
+    {
+        var query = from c in db.customers where c.Country.Contains(country) orderby c.CustomerID ascending select c;	
+	    return query.ToList();
+    }
+
+    public List < Customer > SearchCustomerByCompanyName(string company)
+    {
+    var query = from c in db.customers where c.Country.Contains(company) orderby c.CustomerID ascending select c;
+    return query.ToList();
+    }
+
+    public List < Customer > SearchCustomerByContact(string contact)
+    {
+        var query = from c in db.customers where c.Country.Contains(contact) orderby c.CustomerID ascending select c;
+        return query.ToList();
+    }
+
+    public string ExportToCSV(List < Customer > customerData)
+    {
+        StringBuilder customerDataFromDifferentFilter = new StringBuilder();
+        foreach(var item in CustomerData)
+        {
+            customerDataFromDifferentFilter.AppendFormat("{0},{1}, {2}, {3}", item.CustomerID, item.CompanyName, item.ContactName, item.Country);
+            customerDataFromDifferentFilter.AppendLine();
+        }
+        return customerDataFromDifferentFilter.ToString();
+    }
+} 
+
