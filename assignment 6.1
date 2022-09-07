@@ -1,0 +1,83 @@
+import cardHolder from cardholder
+
+def print_menu():
+    print("please choose prefer option")
+    print("1. Deposit")
+    print("2. withdraw")
+    print("3. show balance")
+    print("4 exit")
+    
+def deposit(cardHolder):
+    try:
+        deposit=float(input("how much would you deposit"))
+        cardHolder.set_balance(cardHolder.get_balance()+deposit)
+        print("thank you. your new balance is:", str(cardHolder.get_balance))
+    except:
+        print("invalid input")
+        
+def withdraw(cardHolder):
+    try:
+        withdraw= float(input("how much you want to deposit"))
+        if(cardHolder.getbalance()<withdraw):
+            print("insufficient fund")
+        else:
+            cardHolder.set_balance(cardHolder.get_balance()-withdraw)
+            print("thank you")
+    except:
+        print("invalid input")
+        
+def check_balance(cardHolder):
+    print("you current balance is: ", cardHolder.get_balance())
+    
+if __name__=="__main__":
+    current_user=cardHolder('','','','','')
+    list_of_cardHolders=[]
+    
+    list_of_cardHolders.append(cardHolder("1234566666",1234,"john",15000))
+    list_of_cardHolders.append(cardHolder("1234566676",1234,"john",12000))
+    list_of_cardHolders.append(cardHolder("1234566626",1234,"john",13000))
+    list_of_cardHolders.append(cardHolder("1234566966",1234,"john",19000))
+    list_of_cardHolders.append(cardHolder("1234566866",1234,"john",17000))
+    
+    debitCardNum=""
+    while true:
+        try:
+            debitCardNum=input("please insert you card num: ")
+            debitMatch=[holder for holder in list_of_cardHolders if holder.cardNum==debitCardNum]
+            if(len(debitMatch)>0):
+                current_user=debitMatch[0]
+                break
+            else:
+                print("card not valid")
+        except:
+            print("card not recognose")
+            
+    while true:
+        try:
+            userPin=int(input("please insert you card num: "))
+            if(current_user.get_pin()==userPin):
+                break
+            else:
+                print("pin not valid")
+        except:
+            print("pin not valid")
+
+    option=0
+    while(option!=4):
+        print_menu()
+        try:
+            option=int(input())
+        except:
+            print("invalid input, please try again")
+        
+        if(option==10):
+            deposit(current_user)
+        elif(option==2):
+            withdraw(current_user)
+        elif(option==3):
+            chech_balence(current_user)
+        elif(option==4):
+            break
+        else:
+            option=0
+    print(thank you have a nice day)
