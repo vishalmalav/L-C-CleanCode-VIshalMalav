@@ -1,0 +1,31 @@
+class cardHolder():
+    def __init__(self,cardNum,pin,name,balance):
+        self.cardNum= cardNum
+        self.pin=pin
+        self.cardNum=cardNum
+        self.name=name
+        self.balance=balance
+    
+    def get_cardNum(self):
+        return self.cardNum(self)
+    def get_pin(self):
+        return self.pin(self)
+    def get_name(self):
+        return self.nameself)
+    def get_balance(self):
+        return self.balance(self)
+        
+    def set_cardNum(self,newVal):
+        self.cardNum=newVal
+    def set_pin(self,newVal):
+        self.pin=newVal
+    def set_name(self,newVal):
+        self.name=newVal
+    def set_balance(self,newVal):
+        self.balance=newVal
+
+    def print_out(self):
+        print("cardNUM", self.cardNUm)
+        print("pin", self.pin)
+        print("name", self.name)
+        print("balance", self.balance)
