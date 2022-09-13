@@ -1,0 +1,26 @@
+const prompt=require("prompt-sync")({ sigint: true }); //npm module for getting stdin
+const request=require("request")
+
+const cityName=prompt("enter the location: ")
+
+function geoCode(location){
+    try{
+        const apiCall = `https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?access_token=pk.eyJ1IjoidmlzaGFsbWFsYXY5NSIsImEiOiJja3BoeWV2OXAxNnBiMnZyaXRpYmZzZDU5In0.jq-x-YSUdnhbBDMXA-TwgQ&limit=1`
+        request({ url: apiCall, json: true }, (error, response) => {
+            if (error) {
+                console.log("oh dear!please check connectivity")
+    
+            } else if (response.body.features.length === 0) {
+                console.log("Oh oo!location not find")
+    
+            } else {
+                console.log("latitude: "+response.body.features[0].center[0])
+                console.log("logitude: "+response.body.features[0].center[1])
+            }
+        })
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+geoCode(cityName)
